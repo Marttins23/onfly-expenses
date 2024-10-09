@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Auth\LoginController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\ExpenseController;
 use App\Http\Controllers\Api\V1\Auth\RegisterController;
 
@@ -22,6 +20,5 @@ Route::post('/register',[RegisterController::class, 'register'])->name('register
 Route::post('/login',[LoginController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResources(['users' => UserController::class]);
     Route::resource('users.expenses', ExpenseController::class)->shallow();
 });
