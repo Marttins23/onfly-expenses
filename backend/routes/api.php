@@ -18,10 +18,6 @@ use App\Http\Controllers\Api\V1\Auth\RegisterController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('/register',[RegisterController::class, 'register'])->name('register-user');
 Route::post('/login',[LoginController::class, 'login'])->name('login');
 
