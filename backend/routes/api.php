@@ -22,6 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/register',[RegisterController::class, 'register'])->name('register-user');
+Route::post('/login',[LoginController::class, 'login'])->name('login');
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResources(['users' => UserController::class]);
     Route::resource('users.expenses', ExpenseController::class)->shallow();
