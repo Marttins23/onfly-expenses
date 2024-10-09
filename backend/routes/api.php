@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\ExpenseController;
+use App\Http\Controllers\Api\V1\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResources([
-        'users' => UserController::class,
-        'expenses' => ExpenseController::class
-    ]);
+    Route::apiResources(['users' => UserController::class]);
+    Route::resource('users.expenses', ExpenseController::class)->shallow();
 });
